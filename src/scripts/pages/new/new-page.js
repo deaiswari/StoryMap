@@ -153,6 +153,7 @@ export default class NewPage {
       console.error('Gagal mengambil lokasi:', error);
     }
 
+    // Sembunyikan loading
     this.hideMapLoading();
 
     this.#setupForm();
