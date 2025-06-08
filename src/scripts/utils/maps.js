@@ -137,4 +137,7 @@ export default class Map {
     newMarker.addTo(this.#map);
     return newMarker;
   }
+  addMapEventListener(eventName, callback) {
+    this.#map.addEventListener(eventName, callback);
+  }
 }

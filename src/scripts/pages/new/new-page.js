@@ -149,6 +149,14 @@ export default class NewPage {
         this.#form.elements.namedItem('latitude').value = lat;
         this.#form.elements.namedItem('longitude').value = lng;
       });
+
+      this.#map.addMapEventListener('click', (event) => {
+        draggableMarker.setLatLng(event.latlng);
+
+        this.#form.elements.namedItem('latitude').value = event.latlng.lat;
+        this.#form.elements.namedItem('longitude').value = event.latlng.lng;
+      });
+
     } catch (error) {
       console.error('Gagal mengambil lokasi:', error);
     }
