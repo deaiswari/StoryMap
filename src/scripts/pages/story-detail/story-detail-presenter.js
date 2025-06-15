@@ -63,3 +63,4 @@ export default class StoriesDetailPresenter {
     return false;
   }
 }
+

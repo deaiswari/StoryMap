@@ -170,13 +170,28 @@ export function generateStoriesDetailTemplate({
             ${description}
           </div>
         </div>
-      </div>
-    </div>
+        <div class="story-detail__body__map__container">
+          <h2 class="story-detail__map__title">Lokasi Cerita</h2>
+          <div class="story-detail__map__container">
+            <div id="map" class="story-detail__map"></div>
+            <div id="map-loading-container"></div>
+          </div>
+        </div>
+
+    <hr/>
 
     <div class="container">
-      <h2 class="story-detail__description__title">Lokasi Cerita</h2>
-      <div id="map" style="height: 300px; width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); margin-top: 1rem;"></div>
+      <div class="story-detail__actions__buttons">
+        <div id="save-actions-container"></div>
+        <div id="notify-me-actions-container">
+          <button id="story-detail-notify-me" class="btn btn-transparent">
+              Try Notify Me <i class="far fa-bell"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
   `;
 }
 
@@ -193,6 +208,21 @@ export function generateRemoveStoriesButtonTemplate() {
   return `
     <button id="story-detail-remove" class="btn btn-transparent">
       Buang Cerita <i class="fas fa-bookmark"></i>
+    </button>
+  `;
+}
+
+export function generateSubscribeButtonTemplate() {
+  return `
+    <button id="subscribe-button" class="btn btn-transparent">
+      Berlangganan Notifikasi <i class="fas fa-bell"></i>
+    </button>
+  `;
+}
+export function generateUnsubscribeButtonTemplate() {
+  return `
+    <button id="unsubscribe-button" class="btn btn-transparent">
+      Batalkan Berlangganan Notifikasi <i class="fas fa-bell-slash"></i>
     </button>
   `;
 }

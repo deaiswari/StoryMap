@@ -100,7 +100,7 @@ export default class StoryDetailPage {
     const notifyBtn = document.getElementById('story-detail-notify-me');
     if (notifyBtn) {
       notifyBtn.addEventListener('click', () => {
-        alert('Fitur notifikasi cerita akan segera hadir!');
+        alert('Fitur notifikasi akan segera hadir!');
       });
     }
   }
@@ -112,7 +112,6 @@ export default class StoryDetailPage {
 
       const btn = document.getElementById('story-detail-save');
       btn?.addEventListener('click', () => {
-        alert('Fitur simpan Cerita akan segera hadir!');
       });
     }
   }
