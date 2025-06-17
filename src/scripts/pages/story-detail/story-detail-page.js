@@ -11,6 +11,7 @@ import StoriesDetailPresenter from './story-detail-presenter';
 import { parseActivePathname } from '../../routes/url-parser';
 import Map from '../../utils/maps';
 import * as CityCareAPI from '../../data/api';
+import Database from '../../data/database';
 
 export default class StoryDetailPage {
   #presenter = null;
@@ -33,6 +34,7 @@ export default class StoryDetailPage {
     this.#presenter = new StoriesDetailPresenter(parseActivePathname().id, {
       view: this,
       apiModel: CityCareAPI,
+      dbModel: Database,
     });
 
     this.#presenter.showStoryDetail();
@@ -106,26 +108,37 @@ export default class StoryDetailPage {
   }
 
   renderSaveButton() {
-    const container = document.getElementById('save-actions-container');
-    if (container) {
-      container.innerHTML = generateSaveStoriesButtonTemplate();
+    document.getElementById('save-actions-container').innerHTML =
+      generateSaveStoriesButtonTemplate();
+ 
+    document.getElementById('story-detail-save').addEventListener('click', async () => {
+      await this.#presenter.saveStory();
+      await this.#presenter.showSaveButton();
 
-      const btn = document.getElementById('story-detail-save');
-      btn?.addEventListener('click', () => {
-      });
-    }
+    });
+  }
+ 
+  saveToBookmarkSuccessfully(message) {
+    console.log(message);
+  }
+  saveToBookmarkFailed(message) {
+    alert(message);
   }
 
   renderRemoveButton() {
-    const container = document.getElementById('save-actions-container');
-    if (container) {
-      container.innerHTML = generateRemoveStoriesButtonTemplate();
-
-      const btn = document.getElementById('story-detail-remove');
-      btn?.addEventListener('click', () => {
-        alert('Fitur simpan cerita akan segera hadir!');
-      });
-    }
+    document.getElementById('save-actions-container').innerHTML =
+      generateRemoveStoriesButtonTemplate();
+ 
+    document.getElementById('story-detail-remove').addEventListener('click', async () => {
+      await this.#presenter.removeStory();
+      await this.#presenter.showSaveButton();
+    });
+  }
+  removeFromBookmarkSuccessfully(message) {
+    console.log(message);
+  }
+  removeFromBookmarkFailed(message) {
+    alert(message);
   }
 
   showStoryDetailLoading() {
