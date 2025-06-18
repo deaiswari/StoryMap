@@ -16,10 +16,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     drawerNavigation: document.getElementById('navigation-drawer'),
     skipLinkButton: document.getElementById('skip-link'),
   });
-  await app.renderPage();
-
   await registerServiceWorker();
 
+  await app.renderPage();
   window.addEventListener('hashchange', async () => {
     await app.renderPage();
 
